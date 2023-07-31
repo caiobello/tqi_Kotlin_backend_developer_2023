@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
 /**
- * Configuração do Swagger 3 para agrupar os endpoints relacionados à API pública da aplicação "atendimento-market".
+ * Configuração do Swagger 3 para agrupar os endpoints relacionados à API pública da aplicação
  */
 
 @Configuration
