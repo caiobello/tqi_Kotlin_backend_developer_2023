@@ -381,7 +381,38 @@ As classes de teste abrangem cenários diversos e críticos para garantir que as
 ### Considerações sobre os testes
 Os testes escritos para as classes de serviço garantem que todas as principais operações do projeto estejam funcionando corretamente e que os comportamentos esperados sejam atendidos. Os testes contribuem para a robustez do projeto, identificando e prevenindo falhas e problemas potenciais.
 
-## Considerações Finais
+# Front-end
+
+A parte do projeto de front-end é apenas um protótipo e não possui integração com sistemas reais de pagamento.
+
+## Páginas Disponíveis
+
+- `index.html`: Página principal da Mercearia, onde os clientes podem escanear códigos de barras e adicionar produtos ao carrinho.
+
+- `cart.html`: Página de visualização do carrinho, onde os clientes podem ver os itens adicionados ao carrinho.
+
+- `paymentmethod.html`: Página para seleção do método de pagamento.
+
+- `credit.html`: Página para pagamento com cartão de crédito (simulação).
+
+- `debit.html`: Página para pagamento com cartão de débito (simulação).
+
+- `cash.html`: Página para pagamento em dinheiro (simulação).
+
+- `pix.html`: Página para pagamento via PIX (simulação).
+
+- `receipt.html`: Página de comprovante de pagamento com informações sobre a transação (simulação).
+
+### Notas do front-end
+
+- Os métodos de pagamento (cartão de crédito, débito, dinheiro e PIX) são simulados e não envolvem transações financeiras reais.
+
+- As imagens utilizadas nas páginas são meramente ilustrativas e podem ser substituídas por imagens reais em um projeto funcional.
+
+- O projeto utiliza recursos de Frontend (HTML, CSS, JavaScript) para simular o processo de compras e pagamentos.
+
+
+## Considerações Finais do projeto tqi_Kotlin_backend_developer_2023
 Este projeto tem o funcionamento de um auto atendimento de uma mercearia, permitindo que os clientes façam suas compras de forma autônoma e eficiente. A estrutura do projeto segue as melhores práticas de desenvolvimento em Kotlin com o uso do Spring Framework, proporcionando modularidade, reutilização de código e facilidade de manutenção.
 
 Para quaisquer dúvidas, problemas ou sugestões, por favor, abra uma "Issue" no repositório do GitHub.
