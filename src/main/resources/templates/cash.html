@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pagamento em Dinheiro</title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+            text-align: center; /* Centraliza o texto no meio da página */
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .button {
+            background-color: #008000;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .button:hover {
+            background-color: #005c00;
+        }
+
+        .thanks-message {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Pagamento em Dinheiro</h1>
+
+    <p>Por favor, efetue o pagamento em dinheiro no caixa.</p>
+    <p>Após realizar o pagamento clique no botão abaixo para obter o recibo.</p>
+
+
+    <div class="button-group">
+        <button class="button" onclick="finalizarPagamento()">Pagamento efetuado</button>
+    </div>
+
+    <div class="thanks-message">
+    </div>
+</div>
+
+<script>
+    // Função para finalizar o pagamento em dinheiro
+    function finalizarPagamento() {
+
+        // Exemplo de mensagem de sucesso (remova essa linha no uso real)
+        alert('(Simulação)Pagamento em dinheiro finalizado com sucesso!');
+
+        // Redireciona para a página de comprovante, após o pagamento
+        window.location.href = "receipt.html";
+    }
+</script>
+</body>
+</html>

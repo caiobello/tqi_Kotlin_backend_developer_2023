@@ -1,0 +1,3 @@
+As classes de modelo representam as entidades do sistema. Cada classe possui suas propriedades que refletem os campos dos objetos que elas representam. Além disso, as anotações @Entity indicam que essas classes serão mapeadas como entidades no banco de dados.
+
+A classe Category representa uma categoria de produto contendo apenas o nome da categoria. A classe Product representa um produto do mercado e possui o nome, unidade de medida e preço unitário. A classe CartItem representa um item do carrinho de compras e contém o ID do produto, a quantidade de itens selecionados e o preço de venda do item. Por fim, a classe Checkout representa a finalização da venda e contém o valor total da compra e a forma de pagamento escolhida.

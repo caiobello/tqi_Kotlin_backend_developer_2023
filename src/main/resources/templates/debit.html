@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pagamento com Cartão de Débito</title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .card-machine {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .card-machine img {
+            max-width: 200px;
+        }
+
+        .thank-you {
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Pagamento com Cartão de Débito</h1>
+
+    <!-- Instruções para o cliente inserir o cartão e digitar a senha. -->
+    <p>Insira ou aproxime o cartão de débito na máquina e digite a senha.</p>
+
+
+    <div class="card-machine">
+        <img src="img/card_machine.png" alt="Máquina de Cartão">
+    </div>
+
+
+    <div class="thank-you">
+        <p>Aguardando processamento...</p>
+    </div>
+</div>
+<script>
+    // Simulação do processamento do pagamento após um tempo de espera
+    setTimeout(function() {
+        alert('(Simulação)Pagamento realizado com sucesso!');
+        window.location.href = "receipt.html"; // Página de comprovante de pagamento
+    }, 4000); // Tempo de espera de 3 segundos para simular o processamento.
+</script>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Itens no Carrinho</title>
+    <meta charset="UTF-8">
+    <style>
+        /* Estilos CSS... */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        #cartItems {
+            margin-top: 20px;
+        }
+
+        .cart-item {
+            border-bottom: 1px solid #ddd;
+            padding: 10px;
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .cart-item-details {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .cart-item-details span {
+            flex: 1;
+            margin: 5px;
+        }
+
+        .total {
+            text-align: right;
+            font-size: 20px;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .total span {
+            color: #008000;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+        .finalizar-compra,
+        .outro-botao {
+            background-color: #008000;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .finalizar-compra:hover,
+        .outro-botao:hover {
+            background-color: #005c00;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Itens no Carrinho</h1>
+
+    <div id="cartItems">
+        <!-- Aqui serão exibidos os itens do carrinho -->
+    </div>
+
+    <div class="total">
+        Total: R$ <span id="totalAmount">0,00</span>
+    </div>
+
+    <div class="button-group">
+        <button class="finalizar-compra" onclick="window.location.href = 'paymentmethod.html'">Selecione o método de pagamento</button>
+
+    </div>
+
+</div>
+<script>
+    // Função para buscar os itens do carrinho via API
+    function getCartItems() {
+        fetch('http://localhost:8080/cart/get/all', { method: 'GET' })
+            .then(response => response.json())
+            .then(data => displayCartItems(data))
+            .catch(error => console.error('Erro ao buscar itens do carrinho:', error));
+    }
+
+    // Função para buscar o produto pelo productId
+    function getProduct(productId) {
+        return fetch(`http://localhost:8080/products/get/${productId}`, { method: 'GET' })
+            .then(response => response.json())
+            .catch(error => {
+                console.error(`Erro ao buscar produto com id ${productId}:`, error);
+                return null;
+            });
+    }
+
+    // Função para exibir os itens do carrinho na página
+    async function displayCartItems(cartItems) {
+        const cartItemsContainer = document.getElementById('cartItems');
+        cartItemsContainer.innerHTML = '';
+
+        for (const item of cartItems) {
+            const cartItemDiv = document.createElement('div');
+            cartItemDiv.classList.add('cart-item');
+
+            const cartItemDetailsDiv = document.createElement('div');
+            cartItemDetailsDiv.classList.add('cart-item-details');
+
+            // Busca o produto pelo productId
+            const product = await getProduct(item.productId);
+
+            const productNameSpan = document.createElement('span');
+            productNameSpan.textContent = `Produto: ${product ? product.name : 'Produto não encontrado'}`;
+
+            const quantitySpan = document.createElement('span');
+            quantitySpan.textContent = `Quantidade: ${item.quantity}`;
+
+            const salePriceSpan = document.createElement('span');
+            salePriceSpan.textContent = `Preço unidade: R$ ${item.salePrice.toFixed(2).replace('.', ',')}`;
+
+            cartItemDetailsDiv.appendChild(productNameSpan);
+            cartItemDetailsDiv.appendChild(quantitySpan);
+            cartItemDetailsDiv.appendChild(salePriceSpan);
+
+            cartItemDiv.appendChild(cartItemDetailsDiv);
+            cartItemsContainer.appendChild(cartItemDiv);
+        }
+
+        // Atualiza o valor total multiplicando a quantidade pelo preço unitário de cada produto
+        const totalAmountSpan = document.getElementById('totalAmount');
+        const totalAmount = cartItems.reduce((acc, item) => acc + item.salePrice * item.quantity, 0);
+        totalAmountSpan.textContent = totalAmount.toFixed(2).replace('.', ',');
+    }
+
+    // Chama a função para buscar os itens do carrinho quando a página carregar
+    document.addEventListener('DOMContentLoaded', getCartItems);
+</script>
+</body>
+</html>

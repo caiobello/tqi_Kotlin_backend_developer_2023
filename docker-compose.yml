@@ -1,0 +1,31 @@
+version: '3.9'
+
+services:
+  # Configuração do banco de dados PostgreSQL
+  db:
+    image: postgres:latest
+    container_name: postgres-db
+    ports:
+      - "5432:5432" # Mapear a porta 5432 do host para a porta 5432 do contêiner
+    environment:
+      POSTGRES_DB: meu_banco # Nome do banco de dados a ser criado
+      POSTGRES_USER: meu_usuario # Nome do usuário do banco de dados
+      POSTGRES_PASSWORD: senha_do_banco # Senha do usuário do banco de dados
+    volumes:
+      - pgdata:/var/lib/postgresql/data # Volume para persistir os dados do banco
+
+  # Configuração do contêiner da aplicação
+  app:
+    build: .
+    container_name: minha-aplicacao
+    ports:
+      - "8080:8080" # Mapear a porta 8080 do host para a porta 8080 do contêiner
+    depends_on:
+      - db # Dependência do banco de dados
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/meu_banco # URL do banco de dados
+      SPRING_DATASOURCE_USERNAME: meu_usuario # Usuário do banco de dados
+      SPRING_DATASOURCE_PASSWORD: senha_do_banco # Senha do usuário do banco de dados
+
+volumes:
+  pgdata:

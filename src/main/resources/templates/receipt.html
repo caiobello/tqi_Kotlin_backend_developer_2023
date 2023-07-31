@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Comprovante de Pagamento</title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .receipt-info {
+            margin-top: 20px;
+        }
+
+        .receipt-info p {
+            margin: 5px 0;
+        }
+
+        .thanks-message {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .thanks-message p {
+            font-weight: bold;
+        }
+
+        .thanks-message span {
+            color: #008000;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Comprovante de Pagamento</h1>
+
+    <p>O pagamento foi realizado com sucesso!</p>
+
+    <div class="receipt-info">
+        <p>Valor: R$ <span id="totalAmount">Carregando...</span></p>
+        <p>Número do Pedido: <span id="orderNumber">Carregando...</span></p>
+    </div>
+
+
+
+    <div class="thanks-message">
+        <p>Obrigado por utilizar nosso serviço de autoatendimento!</p>
+        <p>Volte sempre!</p>
+    </div>
+</div>
+
+<script>
+    // Função para buscar informações do pagamento via API
+    function getPaymentInfo() {
+        fetch('http://localhost:8080/checkout/get/1') // Substitua o "1" pelo ID do checkout específico
+            .then(response => response.json())
+            .then(data => displayPaymentInfo(data))
+            .catch(error => console.error('Erro ao buscar informações do pagamento:', error));
+    }
+
+    // Função para exibir as informações do pagamento na página
+    function displayPaymentInfo(paymentInfo) {
+        const totalAmountSpan = document.getElementById('totalAmount');
+        const orderNumberSpan = document.getElementById('orderNumber');
+
+        totalAmountSpan.textContent = paymentInfo.total.toFixed(2).replace('.', ',');
+        orderNumberSpan.textContent = paymentInfo.id;
+    }
+
+    // Chama a função para buscar informações do pagamento quando a página carregar
+    document.addEventListener('DOMContentLoaded', getPaymentInfo);
+</script>
+</body>
+</html>

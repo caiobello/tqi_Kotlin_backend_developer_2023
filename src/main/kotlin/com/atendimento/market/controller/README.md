@@ -1,0 +1,1 @@
+Os controladores definem os endpoints relacionados às categorias, produtos, carrinho de compras e finalização da venda. Cada controlador possui métodos que mapeiam as requisições HTTP para as operações correspondentes nos serviços adequados. Eles também retornam as respostas HTTP apropriadas, como o código de status e os dados retornados.

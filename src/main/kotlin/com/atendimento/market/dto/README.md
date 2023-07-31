@@ -1,0 +1,1 @@
+As classes DTO representam os objetos utilizados para transferência de dados entre as camadas do sistema, como as requisições e respostas da API.

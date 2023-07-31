@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Finalização de Compra</title>
+    <meta charset="UTF-8">
+    <style>
+        /* Estilos CSS... */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .checkout-summary {
+            margin-top: 20px;
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+            text-align: center;
+        }
+
+        .checkout-summary p {
+            margin: 5px 0;
+        }
+
+        .payment-options {
+            margin-top: 20px;
+        }
+
+        .payment-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .payment-option input {
+            margin-right: 10px;
+        }
+
+        .payment-option label {
+            font-size: 16px;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .finalizar-compra {
+            background-color: #008000;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .finalizar-compra:hover {
+            background-color: #005c00;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Métodos de Pagamento</h1>
+
+    <div class="checkout-summary">
+        <p>Total: R$ <span id="totalAmount">0,00</span></p>
+    </div>
+
+    <div class="payment-options">
+        <div class="payment-option">
+            <input type="radio" name="paymentMethod" value="CARTAO_CREDITO" id="creditCard">
+            <label for="creditCard">Cartão de Crédito</label>
+        </div>
+        <div class="payment-option">
+            <input type="radio" name="paymentMethod" value="CARTAO_DEBITO" id="debitCard">
+            <label for="debitCard">Cartão de Débito</label>
+        </div>
+        <div class="payment-option">
+            <input type="radio" name="paymentMethod" value="DINHEIRO" id="money">
+            <label for="money">Dinheiro</label>
+        </div>
+        <div class="payment-option">
+            <input type="radio" name="paymentMethod" value="PIX" id="pix">
+            <label for="pix">PIX</label>
+        </div>
+    </div>
+
+    <div class="button-group">
+        <button class="finalizar-compra" onclick="finalizarCompra()">Finalizar Compra</button>
+    </div>
+</div>
+
+<script>
+    // Função para buscar o valor total do carrinho via API
+    function getTotalAmount() {
+        fetch('http://localhost:8080/cart/get/all', { method: 'GET' })
+            .then(response => response.json())
+            .then(data => displayTotalAmount(data))
+            .catch(error => console.error('Erro ao buscar valor total do carrinho:', error));
+    }
+
+    // Função para exibir o valor total na página
+    function displayTotalAmount(cartItems) {
+        const totalAmountSpan = document.getElementById('totalAmount');
+        const totalAmount = cartItems.reduce((acc, item) => acc + item.salePrice * item.quantity, 0);
+        totalAmountSpan.textContent = totalAmount.toFixed(2).replace('.', ',');
+    }
+
+    // Função para finalizar a compra
+    function finalizarCompra() {
+        // Verifica qual método de pagamento foi selecionado
+        const selectedPaymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+
+        // Redireciona para a página do método de pagamento selecionado
+        switch (selectedPaymentMethod) {
+            case 'CARTAO_CREDITO':
+                window.location.href = "credit.html";
+                break;
+            case 'CARTAO_DEBITO':
+                window.location.href = "debit.html";
+                break;
+            case 'DINHEIRO':
+                window.location.href = "cash.html";
+                break;
+            case 'PIX':
+                window.location.href = "pix.html";
+                break;
+            default:
+                alert('Selecione um método de pagamento válido.');
+                break;
+        }
+    }
+
+    // Chama a função para buscar o valor total do carrinho quando a página carregar
+    document.addEventListener('DOMContentLoaded', getTotalAmount);
+</script>
+</body>
+</html>

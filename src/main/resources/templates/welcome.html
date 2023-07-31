@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bem-vindo(a) à Mercearia</title>
+    <meta charset="UTF-8">
+    <style>
+        /* Estilos CSS... */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .instructions {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .cart-button {
+            display: block;
+            margin: 20px auto;
+            background-color: #008000;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            text-align: center;
+            width: 200px;
+        }
+
+        .cart-button:hover {
+            background-color: #005c00;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Bem-vindo(a) à Mercearia</h1>
+
+    <p>Para começar suas compras, escaneie os códigos de barras dos produtos desejados:</p>
+
+    <div class="instructions">
+        <p><strong>1. </strong> Escaneie o código de barras do produto com o leitor</p>
+        <p><strong>2. </strong> O produto será adicionado automaticamente ao seu carrinho</p>
+    </div>
+
+    <div class="button-group">
+        <button class="cart-button" onclick="window.location.href = 'cart.html'">Ver Carrinho</button>
+    </div>
+
+</div>
+</body>
+</html>
