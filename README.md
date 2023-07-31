@@ -412,7 +412,7 @@ A parte do projeto de front-end é apenas um protótipo e não possui integraç�
 - O projeto utiliza recursos de Frontend (HTML, CSS, JavaScript) para simular o processo de compras e pagamentos.
 
 
-## Considerações Finais do projeto tqi_Kotlin_backend_developer_2023
+## Considerações Finais do projeto "tqi_Kotlin_backend_developer_2023"
 Este projeto tem o funcionamento de um auto atendimento de uma mercearia, permitindo que os clientes façam suas compras de forma autônoma e eficiente. A estrutura do projeto segue as melhores práticas de desenvolvimento em Kotlin com o uso do Spring Framework, proporcionando modularidade, reutilização de código e facilidade de manutenção.
 
 Para quaisquer dúvidas, problemas ou sugestões, por favor, abra uma "Issue" no repositório do GitHub.
