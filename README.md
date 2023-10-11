@@ -9,7 +9,6 @@ O projeto é organizado em pacotes, cada um com responsabilidades específicas. 
 
 ## Diagrama UML
 ![diagramauml.png](img%2Fdiagramauml.png)
-![DiagramaUmlMercearia.png](img%2FDiagramaUmlMercearia.png)
 ![DiagramaUmlMercearia2.png](img%2FDiagramaUmlMercearia2.png)
 ## Pacote: com.atendimento.market.controller
 
