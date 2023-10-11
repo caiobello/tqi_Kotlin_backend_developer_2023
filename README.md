@@ -7,6 +7,10 @@ Este projeto é um sistema para o funcionamento de um auto atendimento de uma me
 # Estrutura do Projeto
 O projeto é organizado em pacotes, cada um com responsabilidades específicas. A seguir, apresentamos uma visão geral dos pacotes e suas respectivas classes:
 
+## Diagrama UML
+![diagramauml.png](img%2Fdiagramauml.png)
+![DiagramaUmlMercearia.png](img%2FDiagramaUmlMercearia.png)
+![DiagramaUmlMercearia2.png](img%2FDiagramaUmlMercearia2.png)
 ## Pacote: com.atendimento.market.controller
 
 Este pacote contém as classes que atuam como controladores do sistema, responsáveis por receber as requisições HTTP dos clientes e encaminhá-las para as respectivas camadas de serviço.
