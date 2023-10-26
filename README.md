@@ -49,8 +49,7 @@ classDiagram
 
 
 ```
-![diagramauml.png](img%2Fdiagramauml.png)
-![DiagramaUmlMercearia2.png](img%2FDiagramaUmlMercearia2.png)
+
 ## Pacote: com.atendimento.market.controller
 
 Este pacote contém as classes que atuam como controladores do sistema, responsáveis por receber as requisições HTTP dos clientes e encaminhá-las para as respectivas camadas de serviço.
