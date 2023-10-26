@@ -8,6 +8,47 @@ Este projeto é um sistema para o funcionamento de um auto atendimento de uma me
 O projeto é organizado em pacotes, cada um com responsabilidades específicas. A seguir, apresentamos uma visão geral dos pacotes e suas respectivas classes:
 
 ## Diagrama UML
+```mermaid
+classDiagram
+
+
+  class Category {
+    + id: Long
+    + name: String
+  }
+
+  class Product {
+    + id: Long
+    + name: String
+    + unit: String
+    + price: Double
+  }
+
+  class CartItem {
+    + id: Long
+    + productId: Long
+    + quantity: Int
+    + salePrice: Double
+  }
+
+  class Checkout {
+    + id: Long
+    + total: Double
+    + paymentMethod: PaymentMethod
+  }
+
+    class PaymentMethod {
+    + id: Long
+    + name: String
+  }
+
+  Category "1" --* "1..*" Product
+  CartItem "1" --* "1..*" Product
+  Checkout "1" --* "1..*" CartItem
+  Checkout "1" --* "1" PaymentMethod
+
+
+```
 ![diagramauml.png](img%2Fdiagramauml.png)
 ![DiagramaUmlMercearia2.png](img%2FDiagramaUmlMercearia2.png)
 ## Pacote: com.atendimento.market.controller
